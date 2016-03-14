@@ -206,22 +206,20 @@ impsteps$weekend <- factor( x=weekdays(x=as.Date(impsteps$date)) %in% c("Saturda
                            levels=c(FALSE,TRUE),
                            labels=c("WEEKDAY","WEEKEND"))
 
-# There must be a simpler way to do this but...
-
 # determine the new mean number of steps for each time period for WEEKEND/WEEKDAY
 impstepsaperiodmean <- tapply(impsteps$steps,INDEX=list(as.factor(impsteps$interval),impsteps$weekend),FUN=mean)
 
 # draw line graphs of the mean number of steps for each time interval weekdays vs weekends
 myplot1 <- qplot(y=impstepsaperiodmean[,"WEEKDAY"],x=1:length(impstepsaperiodmean[,"WEEKDAY"]),geom="line",
-      main="Daily Activity Pattern Weekdays (with Imputed Values)",
-      xlab="Time of Day (5 minute intervals)",
+      main="Daily Activity Pattern (with Imputed Values)\n\nWeekdays",
+      xlab="",
       ylab="Mean Number of Steps"
          )+
     scale_x_discrete(labels=rownames(impstepsaperiodmean)[seq(13,288,by=12)],breaks=seq(13,288,by=12)) + 
-    theme(axis.text.x = element_text(angle=90,size=8))
+    theme(axis.ticks = element_blank(), axis.text.x = element_blank())
 
 myplot2 <- qplot(y=impstepsaperiodmean[,"WEEKEND"],x=1:length(impstepsaperiodmean[,"WEEKEND"]),geom="line",
-      main="Daily Activity Pattern Weekends (with Imputed Values)",
+      main="Weekends",
       xlab="Time of Day (5 minute intervals)",
       ylab="Mean Number of Steps"
          )+
