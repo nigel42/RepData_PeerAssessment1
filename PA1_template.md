@@ -88,8 +88,8 @@ qplot(y=stepsaperiodmean,x=1:length(stepsaperiodmean),geom="line",
       xlab="Time of Day (5 minute intervals)",
       ylab="Mean Number of Steps"
       )+
-    scale_x_discrete(labels=rownames(stepsaperiodmean)) + 
-    theme(axis.text.x = element_text(angle=90,size=4))
+    scale_x_discrete(labels=rownames(stepsaperiodmean)[seq(13,288,by=12)],breaks=seq(13,288,by=12)) + 
+    theme(axis.text.x = element_text(angle=90,size=8))
 ```
 
 <img src="PA1_template_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="1000px" />
@@ -159,8 +159,8 @@ qplot(y=impstepsaperiodmean,x=1:length(impstepsaperiodmean),geom="line",
       xlab="Time of Day (5 minute intervals)",
       ylab="Mean Number of Steps"
       )+
-    scale_x_discrete(labels=rownames(impstepsaperiodmean)) + 
-    theme(axis.text.x = element_text(angle=90,size=4))
+    scale_x_discrete(labels=rownames(impstepsaperiodmean)[seq(13,288,by=12)],breaks=seq(13,288,by=12)) +  
+    theme(axis.text.x = element_text(angle=90,size=8))
 ```
 
 <img src="PA1_template_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="1000px" />
@@ -217,16 +217,16 @@ myplot1 <- qplot(y=impstepsaperiodmean[,"WEEKDAY"],x=1:length(impstepsaperiodmea
       xlab="Time of Day (5 minute intervals)",
       ylab="Mean Number of Steps"
          )+
-    scale_x_discrete(labels=rownames(impstepsaperiodmean)) + 
-    theme(axis.text.x = element_text(angle=90,size=4))
+    scale_x_discrete(labels=rownames(impstepsaperiodmean)[seq(13,288,by=12)],breaks=seq(13,288,by=12)) + 
+    theme(axis.text.x = element_text(angle=90,size=8))
 
 myplot2 <- qplot(y=impstepsaperiodmean[,"WEEKEND"],x=1:length(impstepsaperiodmean[,"WEEKEND"]),geom="line",
       main="Daily Activity Pattern Weekends (with Imputed Values)",
       xlab="Time of Day (5 minute intervals)",
       ylab="Mean Number of Steps"
          )+
-    scale_x_discrete(labels=rownames(impstepsaperiodmean)) + 
-    theme(axis.text.x = element_text(angle=90,size=4))
+    scale_x_discrete(labels=rownames(impstepsaperiodmean)[seq(13,288,by=12)],breaks=seq(13,288,by=12)) + 
+    theme(axis.text.x = element_text(angle=90,size=8))
 
 grid.arrange(myplot1, myplot2, nrow=2)
 ```
@@ -235,3 +235,4 @@ grid.arrange(myplot1, myplot2, nrow=2)
 People appear to take more steps early on weekdays, but take more steps in the middle of the day,
 and later in the evening on weekends.  This may be due to having more freedom to sleep late
 and move around on weekends.
+
